@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  scope module: :admin, path: "admin" do
+  namespace :admin do
     root "dashboard#index"
+    resources :users, only: %i[create destroy]
   end
 end
