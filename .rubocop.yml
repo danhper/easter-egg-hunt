@@ -1,0 +1,25 @@
+# See https://docs.rubocop.org/rubocop/configuration
+
+AllCops:
+  NewCops: enable
+  Exclude:
+  - 'db/schema.rb'
+  - 'bin/*'
+
+Metrics:
+  Exclude:
+  - 'db/migrate/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+  - 'config/environments/*.rb'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
