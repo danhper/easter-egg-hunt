@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-content users-card-content">
+    <span class="card-title">Easter eggs</span>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Content</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% eggs.each do |egg| %>
+          <tr>
+            <td>
+              <span><%= egg.order %></span>
+            </td>
+            <td>
+              <span ><%= egg.input %></span>
+            </td>
+            <td>
+              <div data-dashboard-egg-target="buttons">
+                <%= link_to edit_admin_egg_path(egg), class: "btn btn-xs" do %>
+                  <i class="fa fa-pen"></i>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-action">
+    <a href="javascript:void(0)" class="activator">Add easter egg</a>
+  </div>
+  <div class="card-reveal">
+    <div class="row">
+      <div class="col s11">
+        <span class="xl2 grey-text text-darken-4">Add easter egg</span>
+      </div>
+      <div class="col s1 card-title">
+        <i class="fa fa-xmark fa-sm"></i>
+      </div>
+    </div>
+    <%= simple_form_for new_egg, url: admin_eggs_path do |f| %>
+      <%= f.input :input %>
+      <%= f.input :order %>
+      <div class="card-action">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

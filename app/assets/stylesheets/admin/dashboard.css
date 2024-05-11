@@ -1,3 +1,8 @@
 .users-card-content {
   min-height: 280px;
 }
+
+textarea {
+  resize: y;
+  min-height: 100px;
+}

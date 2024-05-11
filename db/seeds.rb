@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+names = %w[Daniel Sam Max Chase Paul Louis]
+
+names.each do |name|
+  email = "#{name.downcase}@mero.finance"
+  User.create_with(name:).find_or_create_by!(email:)
+end

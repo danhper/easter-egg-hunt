@@ -10,4 +10,8 @@
 #
 class Hint < ApplicationRecord
   belongs_to :egg
+
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [200, 200]
+  end
 end

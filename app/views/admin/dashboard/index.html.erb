@@ -1,69 +1,12 @@
-<nav class="blue-grey">
-  <div class="container">
-    <div class="nav-wrapper">
-      <%= link_to "Easter Olaive" , admin_root_path %>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>
-          <%= link_to "/" do %>
-            <i class="fa fa-plus fa-xs"></i>
-            Add easter egg
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <div class="container">
   <h1>Dashboard</h1>
   <div class="row">
     <div class="col s12 m6">
-      <div class="card">
-        <div class="card-content users-card-content">
-          <span class="card-title">Users</span>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Points</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users.each do |user| %>
-                <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.email %></td>
-                  <td><%= user.points %></td>
-                  <td>
-                    <%= link_to "Delete", admin_user_path(user), class: "red-text", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-        <div class="card-action">
-          <a href="javascript:void(0)" class="activator">Add user</a>
-        </div>
-        <div class="card-reveal">
-          <div class="row">
-            <div class="col s11">
-              <span class="xl2 grey-text text-darken-4">Add user</span>
-            </div>
-            <div class="col s1 card-title">
-              <i class="fa fa-xmark fa-sm"></i>
-            </div>
-          </div>
-          <%= simple_form_for @new_user, url: admin_users_path do |f| %>
-            <%= f.input :name %>
-            <%= f.input :email %>
-            <div class="card-action">
-              <%= f.button :submit %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <%= render "admin/dashboard/users_panel", users: @users %>
     </div>
+    <div class="col s12 m6">
+      <%= render "admin/dashboard/eggs_panel", eggs: @eggs, new_egg: @new_egg %>
+    </div>
+
   </div>
 </div>

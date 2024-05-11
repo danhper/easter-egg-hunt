@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "dashboard#index"
-    resources :users, only: %i[create destroy]
+    resources :eggs, only: %i[create edit update destroy] do
+      resources :hints, only: %i[create destroy]
+    end
   end
 end

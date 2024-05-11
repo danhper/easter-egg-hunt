@@ -44,3 +44,17 @@
 .xl6 {
   font-size: 4rem;
 }
+
+.btn.btn-xs {
+  line-height: 25px;
+  height: 25px;
+}
+
+.btn.btn-xs i {
+  font-size: 14px;
+  line-height: inherit;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Edit Easter egg</h1>
+  <%= simple_form_for @egg, url: admin_egg_path(@egg)do |f|%>
+    <%= f.input :input %>
+    <%= f.input :order %>
+    <%= f.button :button do %>
+      <i class="fa fa-pen"></i> Update egg
+    <% end %>
+    <%= link_to admin_egg_path(@egg), class: "btn red lighten-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <i class="fa fa-trash"></i> Delete egg
+    <% end %>
+  <% end %>
+  <h2>Hints</h2>
+  <div class="row">
+    <div class="col s12">
+      <table>
+        <thead>
+          <tr>
+            <th>Content</th>
+            <th>Image</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @egg.hints.select { |h| !h.id.nil? }.each do |hint| %>
+            <tr>
+              <td><%= hint.content %></td>
+              <td><%= image_tag hint.image.variant(:thumb) if hint.image.attached? %></td>
+              <td>
+                <%= link_to admin_egg_hint_path(@egg, hint), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                  <i class="fa fa-trash red-text"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Add hint</span>
+          <%= simple_form_for @hint, url: admin_egg_hints_path(@egg) do |f| %>
+            <%= f.input :content %>
+            <%= render "shared/file_input", f: f, key: :image %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

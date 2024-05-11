@@ -9,4 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Egg < ApplicationRecord
+  has_many :hints
+
+  default_scope { order(order: :asc) }
 end

@@ -12,10 +12,10 @@
 
 ## Admin interface
 
-* Add/modify new easter egg
-* Add/modify hint to easter egg
-* Receive notification for submitted answers
-* View answers (sorted by time)
-* Validate answer
-* Notify that answer is correct
-* Modify rules
+- [x] Add/modify new easter egg
+- [x] Add/modify hint to easter egg
+- [ ] Receive notification for submitted answers
+- [ ] View answers (sorted by time)
+- [ ] Validate answer
+- [ ] Notify that answer is correct
+- [ ] Modify rules
