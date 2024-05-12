@@ -1,32 +1,31 @@
-<div class="container">
-  <h1>Edit Easter egg</h1>
-  <%= simple_form_for @egg, url: admin_egg_path(@egg)do |f|%>
-    <%= f.input :input %>
-    <%= f.input :order %>
-    <%= f.button :button do %>
-      <i class="fa fa-pen"></i> Update egg
-    <% end %>
-    <%= link_to admin_egg_path(@egg), class: "btn red lighten-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-      <i class="fa fa-trash"></i> Delete egg
-    <% end %>
+<h1>Edit Easter egg</h1>
+<%= simple_form_for @egg, url: admin_egg_path(@egg)do |f|%>
+  <%= f.input :input %>
+  <%= f.input :order %>
+  <%= f.button :button do %>
+    <i class="fa fa-pen"></i> Update egg
   <% end %>
-  <h2>Hints</h2>
-  <div class="row">
-    <div class="col s12">
-      <%= render "hints/table", egg: @egg, has_actions: true %>
-    </div>
+  <%= link_to admin_egg_path(@egg), class: "btn red lighten-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <i class="fa fa-trash"></i> Delete egg
+  <% end %>
+<% end %>
+<h2>Hints</h2>
+<div class="row">
+  <div class="col s12">
+    <%= render "hints/table", egg: @egg, has_actions: true %>
   </div>
-  <div class="row">
-    <div class="col s12">
-      <div class="card">
-        <div class="card-content">
-          <span class="card-title">Add hint</span>
-          <%= simple_form_for @hint, url: admin_egg_hints_path(@egg) do |f| %>
-            <%= f.input :content %>
-            <%= render "shared/file_input", f: f, key: :image %>
-            <%= f.button :submit %>
-          <% end %>
-        </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Add hint</span>
+        <%= simple_form_for @hint, url: admin_egg_hints_path(@egg) do |f| %>
+          <%= f.input :content %>
+          <%= render "shared/file_input", f: f, key: :image %>
+          <%= f.button :submit %>
+        <% end %>
       </div>
     </div>
   </div>
+</div>

@@ -47,9 +47,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_225125) do
     t.bigint "user_id", null: false
     t.text "answer"
     t.string "status", default: "pending", null: false
+    t.datetime "submitted_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["egg_id"], name: "index_answers_on_egg_id"
+    t.index ["submitted_at"], name: "index_answers_on_submitted_at"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 

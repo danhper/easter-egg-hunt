@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-content users-card-content">
+    <%= link_to "View all", admin_answers_path, class: "float-right" %>
+    <span class="card-title">Pending answers</span>
+    <% if answers.empty? %>
+      <p>No pending answers</p>
+    <% else %>
+      <%= render "answers/table", answers: answers %>
+    <% end %>
+  </div>
+</div>

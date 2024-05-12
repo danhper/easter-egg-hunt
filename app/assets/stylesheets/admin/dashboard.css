@@ -6,3 +6,7 @@ textarea {
   resize: y;
   min-height: 100px;
 }
+
+.answer-actions {
+  min-width: 120px;
+}

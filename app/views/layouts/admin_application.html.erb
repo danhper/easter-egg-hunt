@@ -6,6 +6,9 @@
   </head>
   <body>
     <%= render "admin/header" %>
-    <%= yield %>
+    <%= render "shared/flash" %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

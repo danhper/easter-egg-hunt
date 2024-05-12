@@ -1,0 +1,6 @@
+<h1>All answers</h1>
+<% if @answers.empty? %>
+  <p>No answers yet</p>
+<% else %>
+  <%= render "answers/table", answers: @answers %>
+<% end %>

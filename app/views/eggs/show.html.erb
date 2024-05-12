@@ -14,6 +14,9 @@
           <p>
             If you leave the image field empty, the current image will be removed.
           </p>
+          <p class="red-text">
+            This will update your submission time.
+          </p>
         <% end %>
       <% else %>
         <h5>Submit your answer</h5>
@@ -30,6 +33,7 @@
       <% end %>
     <% else %>
       <h6>Status: <i class="fa <%= answer_icon(@answer) %>"></i> <%= @answer.status.capitalize %></h6>
+      <h6>Submitted at: <%= @answer.submitted_at.to_fs(:short) %></h6>
       <% if @answer.answer %>
         <p><%= @answer.answer %></p>
       <% end %>
@@ -44,6 +48,10 @@
     <% end %>
   </div>
   <div id="hints" class="col s12">
-    <%= render "hints/table", egg: @egg %>
+    <% if @egg.hints.empty? %>
+      <p>No hints yet</p>
+    <% else %>
+      <%= render "hints/table", egg: @egg %>
+    <% end %>
   </div>
 </div>

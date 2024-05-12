@@ -1,11 +1,12 @@
-<div class="container">
-  <h1>Dashboard</h1>
-  <div class="row">
-    <div class="col s12 m6">
-      <%= render "admin/dashboard/users_panel", users: @users %>
-    </div>
-    <div class="col s12 m6">
-      <%= render "admin/dashboard/eggs_panel", eggs: @eggs, new_egg: @new_egg %>
-    </div>
+<h1>Dashboard</h1>
+<div class="row">
+  <div class="col s12 m12">
+    <%= render "admin/dashboard/answers_panel", answers: @answers %>
+  </div>
+  <div class="col s12 m6">
+    <%= render "admin/dashboard/users_panel", users: @users %>
+  </div>
+  <div class="col s12 m6">
+    <%= render "admin/dashboard/eggs_panel", eggs: @eggs, new_egg: @new_egg %>
   </div>
 </div>

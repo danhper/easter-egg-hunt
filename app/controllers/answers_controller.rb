@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
-    if @answer.update({ image: nil }.merge(answer_params))
+    if @answer.update({ image: nil, status: "pending", submitted_at: Time.now }.merge(answer_params))
       redirect_to egg_path(@egg), flash: { success: "Answer updated!" }
     else
       render "eggs/show"

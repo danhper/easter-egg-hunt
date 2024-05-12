@@ -1,6 +1,7 @@
 class EggsController < ApplicationController
   def index
     @eggs = Egg.all
+    @answers = Answer.where(user: current_user).index_by(&:egg_id)
   end
 
   def show

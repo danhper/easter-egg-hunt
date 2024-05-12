@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = ["tabs"];
 
   initialize() {
-    console.log(this.tabsTarget);
     M.Tabs.init(this.tabsTarget, {});
   }
 

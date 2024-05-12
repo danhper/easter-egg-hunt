@@ -30,5 +30,6 @@ Rails.application.routes.draw do
     resources :eggs, only: %i[create edit update destroy] do
       resources :hints, only: %i[create destroy]
     end
+    resources :answers, only: %i[index update]
   end
 end
