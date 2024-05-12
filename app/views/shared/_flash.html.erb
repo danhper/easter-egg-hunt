@@ -1,0 +1,9 @@
+  <% unless flash.empty? %>
+  <div class="container">
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %>">
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

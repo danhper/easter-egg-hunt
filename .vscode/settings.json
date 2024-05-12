@@ -10,5 +10,8 @@
   },
   "emmet.includeLanguages": {
     "erb": "html"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "jnbt.vscode-rufo"
   }
 }

@@ -37,7 +37,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  # config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -72,6 +72,18 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "easteregg_olivier_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mailgun.org",
+    port: 587,
+    domain: "lugand.wedding",
+    user_name: Rails.application.credentials.smtp.email!,
+    password: Rails.application.credentials.smtp.password!,
+    authentication: "plain",
+    enable_starttls: true,
+    open_timeout: 5,
+    read_timeout: 5,
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

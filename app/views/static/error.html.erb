@@ -1,0 +1,7 @@
+<h1>Error <%= response.status %></h1>
+<% if response.status == 404 %>
+  Could not find the page you were looking for.
+<% else %>
+  It seems like an error has occurred. Please try again later.
+  If this persists, please contact Olivier.
+<% end %>

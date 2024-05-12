@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: easteregg_olivier_production
-  username: easteregg_olivier
-  password: <%= ENV["EASTEREGG_OLIVIER_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

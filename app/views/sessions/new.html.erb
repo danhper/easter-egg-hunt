@@ -1,0 +1,10 @@
+<h1>Enter your Mero email to login</h1>
+<%= form_for(:session, url: login_path, method: :post) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Login", class: "btn" %>
+  </div>
+<% end %>

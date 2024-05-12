@@ -5,6 +5,10 @@
     <%= render "shared/head" %>
   </head>
   <body>
-    <%= yield %>
+    <%= render "layouts/header" if current_user %>
+    <%= render "shared/flash" %>
+    <div class="app container">
+      <%= yield %>
+    </div>
   </body>
 </html>

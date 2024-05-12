@@ -9,7 +9,17 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "eggs#index"
+
+  get :login, to: "sessions#new"
+  post :login, to: "sessions#initiate"
+  get :authorize, to: "sessions#create"
+  delete :logout, to: "sessions#destroy"
+
+  get :rules, to: "static#rules"
+
+  match "/404", to: "static#not_found", via: :all
+  match "/500", to: "static#internal_server_error", via: :all
 
   namespace :admin do
     root "dashboard#index"

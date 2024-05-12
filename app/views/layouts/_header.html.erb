@@ -1,0 +1,14 @@
+<nav class="light-green" data-controller="navbar">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Egg Hunt</a>
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <%= render "layouts/navbar_links" %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<ul class="sidenav" id="mobile-nav">
+  <%= render "layouts/navbar_links" %>
+</ul>
