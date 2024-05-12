@@ -11,7 +11,8 @@ export default class extends Controller {
 
   disconnect() {
     this.tooltipTargets.forEach((target) => {
-      M.Tooltip.getInstance(target).destroy();
+      const instance = M.Tooltip.getInstance(target);
+      if (instance) instance.destroy();
     });
   }
 }
