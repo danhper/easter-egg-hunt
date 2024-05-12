@@ -1,32 +1,49 @@
 <p class="xl3"><%= @egg.input %></p>
-<% if @answer.id.nil? || @edit %>
-  <% if @edit %>
-    <h5>Update your answer</h5>
-    <% if @answer.image.attached? %>
-      <p>
-        If you leave the image field empty, the current image will be removed.
-      </p>
+<div class="row" data-controller="tabs">
+  <div class="col s12">
+    <ul class="tabs" data-tabs-target="tabs">
+      <li class="tab col s3"><a href="#answer">Answer</a></li>
+      <li class="tab col s3"><a href="#hints">Hints</a></li>
+    </ul>
+  </div>
+  <div id="answer" class="col s12">
+    <% if @answer.id.nil? || @edit %>
+      <% if @edit %>
+        <h5>Update your answer</h5>
+        <% if @answer.image.attached? %>
+          <p>
+            If you leave the image field empty, the current image will be removed.
+          </p>
+        <% end %>
+      <% else %>
+        <h5>Submit your answer</h5>
+        <p>
+          You can submit your answer as text, as an image, or as both.
+        </p>
+      <% end %>
+      <%= simple_form_for [@egg, @answer] do |f| %>
+        <%= f.input :answer %>
+        <%= render "shared/file_input", f: f, key: :image, label: "Image" %>
+        <div class="mt-2">
+          <%= f.submit class: "btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <h6>Status: <i class="fa <%= answer_icon(@answer) %>"></i> <%= @answer.status.capitalize %></h6>
+      <% if @answer.answer %>
+        <p><%= @answer.answer %></p>
+      <% end %>
+      <% if @answer.image.attached? %>
+        <%= image_tag @answer.image, class: "mw-full" %>
+      <% end %>
+      <% if @answer.status != "accepted" %>
+        <div class="actions mt-2">
+          <%= link_to "Edit", { edit: "1" }, class: "btn" %>
+        </div>
+      <% end %>
     <% end %>
-  <% else %>
-    <h5>Submit your answer</h5>
-    <p>
-      You can submit your answer as text, as an image, or as both.
-    </p>
-  <% end %>
-  <%= simple_form_for [@egg, @answer] do |f| %>
-    <%= f.input :answer %>
-    <%= render "shared/file_input", f: f, key: :image, label: "Image" %>
-    <div class="mt-2">
-      <%= f.submit class: "btn" %>
-    </div>
-  <% end %>
-<% else %>
-  <h5>Your answer</h5>
-  <% if @answer.answer %>
-    <p><%= @answer.answer %></p>
-  <% end %>
-  <% if @answer.image.attached? %>
-    <%= image_tag @answer.image, class: "mw-full" %>
-  <% end %>
-  <%= link_to "Edit", { edit: "1" }, class: "btn" %>
-<% end %>
+  </div>
+  <div id="hints" class="col s12">
+    <%= render "hints/table", egg: @egg %>
+  </div>
+</div>

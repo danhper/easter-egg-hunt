@@ -1,0 +1,27 @@
+<% has_actions = local_assigns[:has_actions] || false %>
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Image</th>
+      <% if has_actions %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% egg.hints.select { |h| !h.id.nil? }.each do |hint| %>
+      <tr>
+        <td><%= hint.content %></td>
+        <td><%= image_tag hint.image.variant(:thumb) if hint.image.attached? %></td>
+        <% if has_actions %>
+          <td>
+            <%= link_to admin_egg_hint_path(egg, hint), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <i class="fa fa-trash red-text"></i>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

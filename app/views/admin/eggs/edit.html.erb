@@ -13,28 +13,7 @@
   <h2>Hints</h2>
   <div class="row">
     <div class="col s12">
-      <table>
-        <thead>
-          <tr>
-            <th>Content</th>
-            <th>Image</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @egg.hints.select { |h| !h.id.nil? }.each do |hint| %>
-            <tr>
-              <td><%= hint.content %></td>
-              <td><%= image_tag hint.image.variant(:thumb) if hint.image.attached? %></td>
-              <td>
-                <%= link_to admin_egg_hint_path(@egg, hint), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                  <i class="fa fa-trash red-text"></i>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render "hints/table", egg: @egg, has_actions: true %>
     </div>
   </div>
   <div class="row">

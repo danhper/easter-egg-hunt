@@ -1,0 +1,32 @@
+.tabs .tab a,
+.tabs .tab a.active {
+  color: rgba(139, 195, 74, 0.7);
+}
+
+.tabs .tab a:hover {
+  color: var(--primary);
+  /*Custom Color On Hover*/
+}
+
+.tabs .tab a:focus.active {
+  color: var(--primary);
+  background-color: rgba(174, 213, 129, 0.2);
+}
+
+.tabs .indicator {
+  background-color: var(--primary);
+}
+
+.btn,
+.btn-large,
+.btn-small {
+  background-color: var(--primary);
+}
+
+nav {
+  background-color: var(--primary);
+}
+
+a {
+  color: var(--primary);
+}

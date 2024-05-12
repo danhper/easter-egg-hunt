@@ -14,55 +14,6 @@
  *= require_self
  */
 
-.xs {
-  font-size: 0.75rem;
-}
-.sm {
-  font-size: 0.875rem;
-}
-.base {
-  font-size: 1rem;
-}
-.lg {
-  font-size: 1.125rem;
-}
-.xl {
-  font-size: 1.25rem;
-}
-.xl2 {
-  font-size: 1.5rem;
-}
-.xl3 {
-  font-size: 1.875rem;
-}
-.xl4 {
-  font-size: 2.25rem;
-}
-.xl5 {
-  font-size: 3rem;
-}
-.xl6 {
-  font-size: 4rem;
-}
-
-.btn.btn-xs {
-  line-height: 25px;
-  height: 25px;
-}
-
-.btn.btn-xs i {
-  font-size: 14px;
-  line-height: inherit;
-}
-
-.hidden {
-  display: none;
-}
-
-.mt-2 {
-  margin-top: 2em;
-}
-
-.mw-full {
-  max-width: 100%;
+:root {
+  --primary: #8bc34a;
 }
