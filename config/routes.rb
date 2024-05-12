@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "eggs#index"
 
+  resources :eggs, only: %i[show] do
+    resources :answers, only: %i[create update]
+  end
+
   get :login, to: "sessions#new"
   post :login, to: "sessions#initiate"
   get :authorize, to: "sessions#create"

@@ -12,4 +12,6 @@
 class Answer < ApplicationRecord
   belongs_to :egg
   belongs_to :user
+
+  has_one_attached :image
 end

@@ -58,3 +58,11 @@
 .hidden {
   display: none;
 }
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.mw-full {
+  max-width: 100%;
+}

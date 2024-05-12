@@ -5,7 +5,7 @@
 <table>
   <% @eggs.each do |egg| %>
     <tr>
-      <td><%= egg.input %></td>
+      <td><%= link_to egg.input, egg %></td>
     </tr>
   <% end %>
 </table>

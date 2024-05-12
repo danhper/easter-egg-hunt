@@ -1,8 +1,11 @@
   <% unless flash.empty? %>
   <div class="container">
     <% flash.each do |type, msg| %>
-      <div class="alert alert-<%= type %>">
+      <div data-controller="flash" class="alert alert-<%= type %>">
         <%= msg %>
+        <span data-action="click->flash#remove">
+          <i class="fa fa-xmark close"></i>
+        </span>
       </div>
     <% end %>
   </div>

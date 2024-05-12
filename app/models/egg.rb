@@ -10,6 +10,7 @@
 #
 class Egg < ApplicationRecord
   has_many :hints
+  has_many :answers
 
   default_scope { order(order: :asc) }
 end

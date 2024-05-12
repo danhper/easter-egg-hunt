@@ -1,0 +1,32 @@
+<p class="xl3"><%= @egg.input %></p>
+<% if @answer.id.nil? || @edit %>
+  <% if @edit %>
+    <h5>Update your answer</h5>
+    <% if @answer.image.attached? %>
+      <p>
+        If you leave the image field empty, the current image will be removed.
+      </p>
+    <% end %>
+  <% else %>
+    <h5>Submit your answer</h5>
+    <p>
+      You can submit your answer as text, as an image, or as both.
+    </p>
+  <% end %>
+  <%= simple_form_for [@egg, @answer] do |f| %>
+    <%= f.input :answer %>
+    <%= render "shared/file_input", f: f, key: :image, label: "Image" %>
+    <div class="mt-2">
+      <%= f.submit class: "btn" %>
+    </div>
+  <% end %>
+<% else %>
+  <h5>Your answer</h5>
+  <% if @answer.answer %>
+    <p><%= @answer.answer %></p>
+  <% end %>
+  <% if @answer.image.attached? %>
+    <%= image_tag @answer.image, class: "mw-full" %>
+  <% end %>
+  <%= link_to "Edit", { edit: "1" }, class: "btn" %>
+<% end %>
