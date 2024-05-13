@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to login_path, flash: { danger: "User not found" }
     else
       @magic_link = MagicLink.create!(user: @user)
-      UserMailer.with(user: @user, magic_link: @magic_link).login_email.deliver_now
+      UserMailer.with(user: @user, magic_link: @magic_link).login_email.deliver_later
       redirect_to login_path, flash: { success: "Magic link sent to #{session_params[:email]}" }
     end
   end
