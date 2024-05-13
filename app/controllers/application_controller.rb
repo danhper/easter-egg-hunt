@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  private
+  protected
 
   def authenticate_user!
     redirect_to login_path, flash: { info: "Please login" } unless current_user

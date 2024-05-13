@@ -8,9 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-names = %w[Daniel Sam Max Chase Paul Louis]
+names = %w[Daniel Sam Max Chase Paul Louis Olivier]
 
 names.each do |name|
   email = "#{name.downcase}@mero.finance"
-  User.create_with(name:).find_or_create_by!(email:)
+  User.create_with(name:, admin: name == "Olivier").find_or_create_by!(email:)
 end

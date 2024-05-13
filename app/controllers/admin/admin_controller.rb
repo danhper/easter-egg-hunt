@@ -1,6 +1,11 @@
 module Admin
-  class AdminController < ActionController::Base
+  class AdminController < ApplicationController
     layout "admin_application"
-    http_basic_authenticate_with name: "olivier", password: "secret"
+
+    protected
+
+    def authenticate_user!
+      redirect_to root_path unless current_user && current_user.admin?
+    end
   end
 end
