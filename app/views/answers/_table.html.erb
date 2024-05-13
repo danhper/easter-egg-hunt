@@ -4,40 +4,42 @@
       <th>User</th>
       <th>Easter egg</th>
       <th>Time</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th></th>
+      <th class="desktop-only">Content</th>
+      <th class="desktop-only">Image</th>
+      <th class="desktop-only"></th>
     </tr>
   </thead>
-  <tbody data-controller="tooltips">
+  <tbody data-controller="tooltips admin-dashboard">
     <% first = true %>
     <% answers.each do |answer| %>
-      <tr>
+      <tr data-id="<%= answer.id %>" data-action="click->admin-dashboard#gotoAnswer">
         <td><%= answer.user_name %></td>
         <td><%= answer.egg_input %></td>
         <td><%= answer.submitted_at.to_fs(:short) %></td>
-        <td><%= answer.answer %></td>
-        <td>
+        <td class="desktop-only"><%= answer.answer %></td>
+        <td class="desktop-only">
           <% if answer.image.attached? %>
             <%= link_to answer.image do image_tag answer.image.variant(:thumb) end %>
           <% end %>
         </td>
         <% if answer.status == "pending" %>
           <% if first %>
-            <td class="answer-actions">
+            <td class="desktop-only" class="answer-actions">
             <% else %>
-              <td class="answer-actions" data-tooltips-target="tooltip" data-position="top" data-tooltip="Validate earlier answers first">
+              <td class="desktop-only" class="answer-actions" data-tooltips-target="tooltip" data-position="top" data-tooltip="Validate earlier answers first">
               <% end %>
-              <%= link_to admin_answer_path(answer, answer: { status: "accepted" }), class: "btn btn-xs light-green #{!first ? 'disabled' : ''}", data: { turbo_method: :patch } do %>
+              <%= link_to admin_answer_path(answer, answer: { status: "accepted" }), class: "btn btn-xs light-green #{!first ? 'disabled' : ''}",
+                                                    data: { turbo_method: :patch, turbo_confirm: "Are you surre you want to accept this answer?" } do %>
                 <i class="fa fa-check"></i>
               <% end %>
-              <%= link_to admin_answer_path(answer, answer: { status: "rejected" }), class: "btn btn-xs red lighten-2 #{!first ? 'disabled' : ''}", data: { turbo_method: :patch } do %>
+              <%= link_to admin_answer_path(answer, answer: { status: "rejected" }), class: "btn btn-xs red lighten-2 #{!first ? 'disabled' : ''}",
+                                                    data: { turbo_method: :patch, turbo_confirm: "Are you surre you want to reject this answer?" } do %>
                 <i class="fa fa-xmark"></i>
               <% end %>
             </td>
             <% first = false %>
           <% else %>
-            <td>
+            <td class="desktop-only">
               <i class="fa <%= answer_icon(answer) %>"></i> <%= answer.status.capitalize %>
             </td>
           <% end %>

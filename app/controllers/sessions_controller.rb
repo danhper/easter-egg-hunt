@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :redirect_to_root, only: %i[new initiate create], unless: -> { current_user.nil? }
   skip_before_action :authenticate_user!
 
   def new
@@ -33,6 +34,10 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def redirect_to_root
+    redirect_to root_path
+  end
 
   def session_params
     params.require(:session).permit(:email)

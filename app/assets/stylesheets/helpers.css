@@ -47,10 +47,20 @@
   margin-top: 2em;
 }
 
+.mr-5 {
+  margin-right: 5em;
+}
+
 .mw-full {
   max-width: 100%;
 }
 
 .float-right {
   float: right;
+}
+
+.desktop-only {
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

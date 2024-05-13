@@ -1,0 +1,36 @@
+<h1>Answer #<%= @answer.id %></h1>
+<dl>
+  <dt>Easter egg</dt>
+  <dd><%= @answer.egg_input %></dd>
+  <dt>Submited by</dt>
+  <dd><%= @answer.user_name %></dd>
+  <dt>Submited at</dt>
+  <dd><%= @answer.submitted_at.to_fs(:short) %></dd>
+  <dt>Status</dt>
+  <dd><i class="fa <%= answer_icon(@answer) %>"></i> <%= @answer.status.capitalize %></dd>
+  <% if @answer.answer %>
+    <dt>Text answer</dt>
+    <dd><%= @answer.answer %></dd>
+  <% end %>
+  <% if @answer.image.attached? %>
+    <dt>Image answer</dt>
+    <dd><%= image_tag @answer.image, class: "responsive-img" %></dd>
+  <% end %>
+</dl>
+<% if @answer.status == "pending" %>
+  <hr>
+  <% if @is_first %>
+    <div class="actions">
+      <%= link_to admin_answer_path(@answer, answer: { status: "accepted" }), class: "btn light-green mr-5",
+                                           data: { turbo_method: :patch, turbo_confirm: "Are you surre you want to accept this answer?" } do %>
+        <i class="fa fa-check"></i> Accept
+      <% end %>
+      <%= link_to admin_answer_path(@answer, answer: { status: "rejected" }), class: "btn red lighten-2",
+                                           data: { turbo_method: :patch, turbo_confirm: "Are you surre you want to reject this answer?" } do %>
+        <i class="fa fa-xmark"></i> Reject
+      <% end %>
+    </div>
+  <% else %>
+    <p>There is an earlier answer for this Easter egg. Validate it first before validating this one.</p>
+  <% end %>
+<% end %>
