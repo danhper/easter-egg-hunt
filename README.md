@@ -14,7 +14,7 @@
 
 - [x] Add/modify new easter egg
 - [x] Add/modify hint to easter egg
-- [ ] Receive notification for submitted answers
+- [x] Receive notification for submitted answers
 - [x] View answers (sorted by time)
 - [x] Validate answer
 - [ ] Notify that answer is correct

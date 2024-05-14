@@ -1,18 +1,18 @@
 Hi <%= @admin.name %>,
 <br />
 You just got a new answer for easter egg <%= @answer.egg_input %>.
-<br>
+<br />
 The answer was submitted by <%= @answer.user_name %> at <%= @answer.submitted_at.to_fs(:short) %>.
-<br>
-<br>
+<br />
+<br />
 This is the answer: 
 <% if @answer.answer %>
   <%= @answer.answer %>
-  <br>
+  <br />
 <% end %>
 <% if @answer.image.attached? %>
-  <%= image_tag @answer.image, style: "width: 100%;" %>
+  <%= image_tag @answer.image, style: "height: 300px;" %>
 <% end %>
-<br>
-<br>
-Click here to validate or reject the answer: <%= link_to admin_answer_url(@answer) %>.
+<br />
+<br />
+Click here to validate or reject the answer: <%= link_to admin_answer_url(@answer), admin_answer_url(@answer) %>.
