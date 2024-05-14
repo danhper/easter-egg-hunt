@@ -1,5 +1,6 @@
 class StaticController < ApplicationController
   def rules
+    @rules = Settings.rules
   end
 
   def not_found

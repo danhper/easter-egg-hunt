@@ -1,0 +1,9 @@
+<h1>Edit rules</h1>
+<%= form_for :settings, url: admin_rules_path, method: :patch do |f| %>
+  <div>
+    <%= f.text_area :rules, class: "large" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn" %>
+  </div>
+<% end %>

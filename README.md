@@ -18,4 +18,4 @@
 - [x] View answers (sorted by time)
 - [x] Validate answer
 - [ ] Notify that answer is correct
-- [ ] Modify rules
+- [x] Modify rules

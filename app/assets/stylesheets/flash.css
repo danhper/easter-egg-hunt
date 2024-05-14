@@ -9,7 +9,8 @@
   float: right;
 }
 
-.alert.alert-success {
+.alert.alert-success,
+.alert.alert-notice {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;

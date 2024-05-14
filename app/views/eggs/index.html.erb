@@ -1,6 +1,7 @@
 <h1>Hi <%= current_user.name %></h1>
 <p class="xl">Welcome to Olivier's wedding Easter Egg hunt</p>
 <p>Your challenge, shall you accept it, is to find as many as you can of the Easter eggs below.</p>
+<p>You can check the rules <%= link_to "here", rules_path %>.</p>
 <hr>
 <table data-controller="tooltips">
   <% @eggs.each do |egg| %>

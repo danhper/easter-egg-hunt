@@ -31,5 +31,8 @@ Rails.application.routes.draw do
       resources :hints, only: %i[create destroy]
     end
     resources :answers, only: %i[index show update]
+
+    get :rules, to: "rules#edit"
+    patch :rules, to: "rules#update"
   end
 end

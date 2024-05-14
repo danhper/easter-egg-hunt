@@ -3,8 +3,12 @@
 }
 
 textarea {
-  resize: y;
+  resize: vertical;
   min-height: 100px;
+}
+
+textarea.large {
+  min-height: 400px;
 }
 
 .answer-actions {

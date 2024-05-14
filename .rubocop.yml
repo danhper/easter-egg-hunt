@@ -26,3 +26,9 @@ Style/Documentation:
 
 Style/EmptyMethod:
   Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Layout/HeredocIndentation:
+  Enabled: false
