@@ -1,0 +1,5 @@
+Hi <%= @user.name %>,
+<br />
+A new hint for easter egg <%= @hint.egg_input %> has been submitted.
+<br />
+Check it out here: <%= link_to egg_url(@hint.egg), egg_url(@hint.egg) %>

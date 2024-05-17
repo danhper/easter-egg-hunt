@@ -17,5 +17,5 @@
 - [x] Receive notification for submitted answers
 - [x] View answers (sorted by time)
 - [x] Validate answer
-- [ ] Notify that answer is correct
+- [x] Notify that answer is correct
 - [x] Modify rules

@@ -1,13 +1,14 @@
 class AnswerMailer < ApplicationMailer
-  def notify_new
+  def notify_answer
     @admin = params[:admin]
     @answer = params[:answer]
-    mail(to: @admin.email, subject: "New answer received")
+    @new = params[:new]
+    subject = @new ? "New answer received" : "Answer updated"
+    mail(to: @admin.email, subject:)
   end
 
-  def notify_update
-    @admin = params[:admin]
+  def notify_response
     @answer = params[:answer]
-    mail(to: @admin.email, subject: "Answer updated")
+    mail(to: @answer.user.email, subject: "Your answer has been #{@answer.accepted? ? "accepted" : "rejected"}")
   end
 end

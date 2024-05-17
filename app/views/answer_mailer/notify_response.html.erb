@@ -1,0 +1,9 @@
+Hi <%= @answer.user_name %>,
+<br />
+Your answer for easter egg <%= @answer.egg_input %> has been <%= @answer.accepted? ? "accepted" : "rejected" %>.
+<br />
+<% if @answer.accepted? %>
+  Congratulations!
+<% else %>
+  You can go back to the easter egg page and submit a new answer: <%= link_to egg_url(@answer.egg), egg_url(@answer.egg) %>
+<% end %>

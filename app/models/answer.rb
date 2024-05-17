@@ -24,4 +24,8 @@ class Answer < ApplicationRecord
   default_scope { order(submitted_at: :asc) }
 
   scope :pending, -> { where(status: "pending") }
+
+  def accepted?
+    status == "accepted"
+  end
 end

@@ -4,6 +4,7 @@ module Admin
       @egg = Egg.find(params[:egg_id])
       @hint = @egg.hints.build(hint_params)
       if @hint.save
+        User.all.each { |user| HintMailer.with(user:, hint: @hint).notify_new.deliver_later }
         redirect_to edit_admin_egg_path(@egg), notice: "Hint created"
       else
         redirect_to edit_admin_egg_path(@egg), alert: "Could not create hint"

@@ -12,6 +12,7 @@ module Admin
     def update
       @answer = Answer.find(params[:id])
       if @answer.update(answer_params)
+        AnswerMailer.with(answer: @answer).notify_response.deliver_later
         redirect_to admin_root_path, flash: { success: "Answer updated" }
       else
         redirect_to admin_root_path, flash: { danger: "Failed to update answer" }

@@ -32,3 +32,6 @@ Style/MutableConstant:
 
 Layout/HeredocIndentation:
   Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false

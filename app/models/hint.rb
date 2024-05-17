@@ -11,6 +11,8 @@
 class Hint < ApplicationRecord
   belongs_to :egg
 
+  delegate :input, to: :egg, prefix: true
+
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [200, 200]
   end

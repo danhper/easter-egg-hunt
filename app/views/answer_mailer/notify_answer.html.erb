@@ -1,11 +1,15 @@
 Hi <%= @admin.name %>,
 <br />
-You just got a new answer for easter egg <%= @answer.egg_input %>.
+<% if @new %>
+  You just got a new answer for easter egg <%= @answer.egg_input %>.
+<% else %>
+  You just got an update on an answer for easter egg <%= @answer.egg_input %>.
+<% end %>
 <br />
 The answer was submitted by <%= @answer.user_name %> at <%= @answer.submitted_at.to_fs(:short) %>.
 <br />
 <br />
-This is the answer: 
+This is the <%= @new ? "new" : "" %>answer: 
 <% if @answer.answer %>
   <%= @answer.answer %>
   <br />
