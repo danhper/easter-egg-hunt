@@ -34,4 +34,4 @@ Good luck!
 
 RULES
 
-Settings.create(rules: RULES) if Settings.any?
+Settings.create(rules: RULES) unless Settings.any?
