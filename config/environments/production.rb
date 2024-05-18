@@ -68,7 +68,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter = :resque
+  config.active_job.queue_adapter = :async
   # config.active_job.queue_name_prefix = "easteregg_olivier_production"
 
   config.action_mailer.perform_caching = false
@@ -84,6 +84,7 @@ Rails.application.configure do
     open_timeout: 5,
     read_timeout: 5,
   }
+  config.action_mailer.default_url_options = { host: "easter.lugand.wedding", protocol: "https" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
