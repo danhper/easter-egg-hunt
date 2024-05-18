@@ -2,13 +2,14 @@
 #
 # Table name: answers
 #
-#  id         :bigint           not null, primary key
-#  egg_id     :bigint           not null
-#  user_id    :bigint           not null
-#  answer     :text
-#  status     :string           default("pending"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           not null, primary key
+#  egg_id       :bigint           not null
+#  user_id      :bigint           not null
+#  answer       :text
+#  status       :string           default("pending"), not null
+#  submitted_at :datetime         not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 class Answer < ApplicationRecord
   belongs_to :egg
@@ -25,7 +26,16 @@ class Answer < ApplicationRecord
 
   scope :pending, -> { where(status: "pending") }
 
+  before_save :update_user_points, if: :will_save_change_to_status?
+
   def accepted?
     status == "accepted"
+  end
+
+  def update_user_points
+    return unless status == "accepted"
+
+    points = User.count - Answer.where(egg_id: egg.id, status: "accepted").count
+    user.increment!(:points, points)
   end
 end
