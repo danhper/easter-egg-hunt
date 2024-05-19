@@ -1,6 +1,7 @@
 class EggsController < ApplicationController
   def index
-    @eggs = Egg.all
+    @eggs = Egg.active
+    @expired_eggs = Egg.expired
     @answers = Answer.where(user: current_user).index_by(&:egg_id)
   end
 

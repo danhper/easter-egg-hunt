@@ -26,6 +26,7 @@ class AnswersController < ApplicationController
 
   def find_egg
     @egg = Egg.find(params[:egg_id])
+    redirect_to root_path, flash: { alert: "Egg not found!" } unless @egg && !@egg.expired?
   end
 
   def answer_params

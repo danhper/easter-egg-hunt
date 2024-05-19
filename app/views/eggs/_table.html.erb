@@ -1,0 +1,16 @@
+<table data-controller="tooltips">
+  <% eggs.each do |egg| %>
+    <tr>
+      <td>
+        <% if egg.extra_points > 0 %>
+          <span class="badge new <%= badge_color(egg)%>" data-badge-caption="">+<%= egg.extra_points %></span>
+        <% end %>
+        <%= link_to egg.input, egg, disabled: true %></td>
+      <td>
+        <% if @answers[egg.id] %>
+          <i data-tooltips-target="tooltip" data-position="top" data-tooltip="<%= @answers[egg.id].status.capitalize %>" class="fa <%= answer_icon(@answers[egg.id]) %>"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

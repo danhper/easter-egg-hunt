@@ -1,4 +1,10 @@
-<p class="xl3"><%= @egg.input %></p>
+<p class="xl3"><%= @egg.input %>
+  <% if @egg.extra_points > 0 %>
+    <span class="badge new <%= badge_color(@egg)%>" data-badge-caption="">+<%= @egg.extra_points %></span>
+  <% end %></p>
+<% if @egg.expiry %>
+  <p>Deadline: <%= @egg.expiry.to_fs(:short) %></p>
+<% end %>
 <div class="row" data-controller="tabs">
   <div class="col s12">
     <ul class="tabs" data-tabs-target="tabs">
@@ -7,7 +13,7 @@
     </ul>
   </div>
   <div id="answer" class="col s12">
-    <% if @answer.id.nil? || @edit %>
+    <% if (@answer.id.nil? || @edit) && !@egg.expired? %>
       <% if @edit %>
         <h5>Update your answer</h5>
         <% if @answer.image.attached? %>
@@ -32,15 +38,19 @@
         </div>
       <% end %>
     <% else %>
-      <h6>Status: <i class="fa <%= answer_icon(@answer) %>"></i> <%= @answer.status.capitalize %></h6>
-      <h6>Submitted at: <%= @answer.submitted_at.to_fs(:short) %></h6>
+      <% if @answer.submitted_at %>
+        <h6>Status: <i class="fa <%= answer_icon(@answer) %>"></i> <%= @answer.status.capitalize %></h6>
+        <h6>Submitted at: <%= @answer.submitted_at.to_fs(:short) %></h6>
+      <% else %>
+        <p>You did not submit an answer for this egg</p>
+      <% end %>
       <% if @answer.answer %>
         <p><%= @answer.answer %></p>
       <% end %>
       <% if @answer.image.attached? %>
         <%= image_tag @answer.image, class: "mw-full" %>
       <% end %>
-      <% if @answer.status != "accepted" %>
+      <% if @answer.status != "accepted" && !@egg.expired? %>
         <div class="actions mt-2">
           <%= link_to "Edit", { edit: "1" }, class: "btn" %>
         </div>

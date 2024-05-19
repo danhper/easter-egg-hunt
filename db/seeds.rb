@@ -26,6 +26,8 @@ The position of a person is determined by the time they submit their answer.
 Note that any edit of an existing answer will reset the submission time to the edit time.
 Once an answer is submitted, I will validate or reject the answer.
 If an answer is rejected, a new answer can be resubmitted, but the submission time will be reset.
+Some eggs also have extra points, which will be added to the points earned by the position.
+These points are indicated before the egg title.
 
 Hints will be added as the hunt progresses.
 All participants will receive an email notification when a hint is added.

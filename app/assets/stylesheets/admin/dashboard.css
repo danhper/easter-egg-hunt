@@ -14,3 +14,11 @@ textarea.large {
 .answer-actions {
   min-width: 120px;
 }
+
+.datetime select {
+  display: inline;
+  width: auto;
+}
+.egg_difficulty select {
+  display: inline;
+}

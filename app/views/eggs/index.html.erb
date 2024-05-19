@@ -4,15 +4,8 @@
   You can check the rules <%= link_to "here", rules_path %>.</p>
 <p class="text-lg">You currently have <%= current_user.points %> points</p>
 <hr>
-<table data-controller="tooltips">
-  <% @eggs.each do |egg| %>
-    <tr>
-      <td><%= link_to egg.input, egg %></td>
-      <td>
-        <% if @answers[egg.id] %>
-          <i data-tooltips-target="tooltip" data-position="top" data-tooltip="<%= @answers[egg.id].status.capitalize %>" class="fa <%= answer_icon(@answers[egg.id]) %>"></i>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= render "eggs/table", eggs: @eggs %>
+<% unless @expired_eggs.empty? %>
+  <h4>Expired eggs</h4>
+  <%= render "eggs/table", eggs: @expired_eggs %>
+<% end %>

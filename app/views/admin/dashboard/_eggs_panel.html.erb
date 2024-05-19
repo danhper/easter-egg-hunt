@@ -45,6 +45,8 @@
     <%= simple_form_for new_egg, url: admin_eggs_path do |f| %>
       <%= f.input :input %>
       <%= f.input :order %>
+      <%= f.input :expiry, html5: true, include_blank: true %>
+      <%= f.input :difficulty, collection: ["easy", "medium", "hard"] %>
       <div class="card-action">
         <%= f.button :submit %>
       </div>

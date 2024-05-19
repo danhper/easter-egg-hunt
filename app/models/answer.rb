@@ -35,7 +35,7 @@ class Answer < ApplicationRecord
   def update_user_points
     return unless status == "accepted"
 
-    points = User.count - Answer.where(egg_id: egg.id, status: "accepted").count
+    points = egg.extra_points + User.count - Answer.where(egg_id: egg.id, status: "accepted").count
     user.increment!(:points, points)
   end
 end

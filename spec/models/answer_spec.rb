@@ -35,5 +35,13 @@ RSpec.describe Answer, type: :model do
       answer.update(status: "accepted")
       expect(user.reload.points).to eq(4)
     end
+
+    it "should account extra points" do
+      create_list(:user, 3)
+      create(:answer, status: "accepted", egg:)
+      egg.update(difficulty: "medium")
+      answer.update(status: "accepted")
+      expect(user.reload.points).to eq(6)
+    end
   end
 end

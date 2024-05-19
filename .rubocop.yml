@@ -13,6 +13,7 @@ Metrics:
 Metrics/BlockLength:
   Exclude:
   - 'config/environments/*.rb'
+  - 'spec/**/*.rb'
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

@@ -32,7 +32,7 @@ module Admin
     private
 
     def egg_params
-      params.require(:egg).permit(:input, :order)
+      params.require(:egg).permit(:input, :order, :expiry, :difficulty)
     end
   end
 end

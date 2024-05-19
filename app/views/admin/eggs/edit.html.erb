@@ -1,7 +1,9 @@
 <h1>Edit Easter egg</h1>
-<%= simple_form_for @egg, url: admin_egg_path(@egg)do |f|%>
+<%= simple_form_for @egg, url: admin_egg_path(@egg) do |f|%>
   <%= f.input :input %>
   <%= f.input :order %>
+  <%= f.input :expiry, html5: true, include_blank: true %>
+  <%= f.input :difficulty, collection: ["easy", "medium", "hard"] %>
   <%= f.button :button do %>
     <i class="fa fa-pen"></i> Update egg
   <% end %>

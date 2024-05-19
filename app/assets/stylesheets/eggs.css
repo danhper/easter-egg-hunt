@@ -3,3 +3,8 @@
     font-size: 1.1rem;
   }
 }
+
+span.badge.inline-badge {
+  float: none;
+  display: inline-block;
+}
