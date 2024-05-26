@@ -79,6 +79,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.7)
     bindex (0.8.1)
     bootsnap (1.18.3)
@@ -291,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bcrypt (~> 3.1.7)
   bootsnap
   cloudinary (~> 2.0)
   debug

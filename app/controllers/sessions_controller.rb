@@ -23,20 +23,34 @@ class SessionsController < ApplicationController
       magic_link&.destroy
       redirect_to login_path, flash: { danger: "Magic link is invalid, used or expired" }
     else
-      session[:user_id] = token.user.id
+      login(token.user)
+      remember(token.user)
       redirect_to root_path
     end
   end
 
   def destroy
-    reset_session
-    redirect_to login_path
+    forget(current_user)
+    redirect_to login_path, flash: { success: "Logged out" }
   end
 
   private
 
+  def forget(user)
+    user.forget
+    session.delete(:user_id)
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
+
   def redirect_to_root
     redirect_to root_path
+  end
+
+  def remember(user)
+    user.remember
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
   end
 
   def session_params
