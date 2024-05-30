@@ -3,6 +3,9 @@ module Admin
     def create
       @egg = Egg.new(egg_params)
       if @egg.save
+        User.all.each do |user|
+          EggMailer.with(egg: @egg, user:).notify_new.deliver_later
+        end
         redirect_to admin_root_path, notice: "Easter egg created"
       else
         redirect_to admin_root_path, alert: "Could not create egg"

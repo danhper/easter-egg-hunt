@@ -9,8 +9,8 @@
 #  updated_at :datetime         not null
 #
 class Egg < ApplicationRecord
-  has_many :hints
-  has_many :answers
+  has_many :hints, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   default_scope { order(order: :asc) }
   scope :active, -> { where("expiry > ?", Time.current).or(where(expiry: nil)) }
