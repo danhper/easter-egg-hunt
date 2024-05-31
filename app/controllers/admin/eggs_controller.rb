@@ -20,6 +20,9 @@ module Admin
     def update
       @egg = Egg.find(params[:id])
       if @egg.update(egg_params)
+        User.all.each do |user|
+          EggMailer.with(egg: @egg, user:).notify_update.deliver_later
+        end
         redirect_to admin_root_path, notice: "Easter egg updated"
       else
         redirect_to admin_root_path, alert: "Could not update egg"
