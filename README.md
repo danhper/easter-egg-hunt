@@ -1,4 +1,10 @@
-# Olivier easter egg
+# Easter egg hunt
+
+This is a simple web application to create an easter egg hunt game.
+The application is divided into two parts: the end-user interface and the admin interface. The end-user interface is used to view the easter eggs and submit answers. The admin interface is used to manage the easter eggs, hints, and answers.
+This was created for a one-off event and is not particularly designed to be extensible or reusable, so if you want to use it, you will likely have to modify it to fit your needs.
+
+Below is a list of the implemented features.
 
 ## End-user interface
 
